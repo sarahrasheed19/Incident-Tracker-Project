@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+	<meta charset="utf-8">
+	{% block title %}<title>Edit Incident</title>{% endblock title %}
+{% endblock head %}
+
+{% block body %}
+{{ super() }}
+
+<div class="limiter">
+    <div class="container-login100">
+
+    <div style="position:fixed; top:50px; left:50px;">
+        <a href="{{url_for('auth.logout')}}">
+            <button class="login100-form-btn" action="{{url_for('auth.logout')}}">
+                Log Out
+            </button>
+        </a>
+    </div>
+
+    <div style="position:fixed; top:50px;;">
+        <a href="{{url_for('home.dashboard')}}">
+            <button class="login100-form-btn" action="{{url_for('home.dashboard')}}">
+                Back to Dashboard
+            </button>
+        </a>
+    </div>
+
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-55 p-b-50">
+            <form class="login100-form validate-form" action="{{url_for('forms.edited_incident', ticketID = incident.incidentID)}}" method="POST">
+                <span class="login100-form-title p-b-33">
+                    Edit Incident
+                </span>
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" type="text" name="title" placeholder="{{incident.title}}">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input">
+                <input class="input100" list="categories" name="category" placeholder="{{incident.category}}">
+                    <datalist id="categories">
+                    {% for c in categories %}
+                    <option value="{{c}}"></option>
+                    {% endfor %}
+                    </datalist> 
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" list="tags" name="tag1" placeholder="{{currentTags[0]}}">
+                    <datalist id="tags">
+                    {% for t in tagNames %}
+                    <option value="{{t}}"></option>
+                    {% endfor %}
+                    </datalist> 
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" list="tags" name="tag2" placeholder="{{currentTags[1]}}">
+                    <datalist id="tags">
+                    {% for t in tagNames %}
+                    <option value="{{t}}"></option>
+                    {% endfor %}
+                    </datalist> 
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" list="tags" name="tag3" placeholder="{{currentTags[2]}}">
+                    <datalist id="tags">
+                    {% for t in tagNames %}
+                    <option value="{{t}}"></option>
+                    {% endfor %}
+                    </datalist> 
+
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" list="users" name="poc" placeholder="Point of Contact: {{POC}}">
+                    <datalist id="users">
+                    {% for u in users %}
+                    <option value="{{u}}"></option>
+                    {% endfor %}
+                    </datalist> 
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" list="users" name="assignee" placeholder="Current Assignee: {{currentAssignee}}">
+                    <datalist id="users">
+                    {% for u in users %}
+                    <option value="{{u}}"></option>
+                    {% endfor %}
+                    </datalist> 
+
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="wrap-input100 validate-input"> 
+                <input class="input100" type="text" name="description" placeholder="Description">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+               </div>
+
+               <div class="container-login100-form-btn m-t-20">
+            	<button class="login100-form-btn">
+                    Edit
+                </button>
+               </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

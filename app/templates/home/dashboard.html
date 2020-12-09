@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ super() }}
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}<title>Dashboard</title> {% endblock title %}
+
+{% endblock head %}
+
+{% block body %}
+
+<div class="limiter">
+    <div class="container-login100">
+                <div style="position:fixed; top:50px;">
+                    <a href="{{url_for('forms.create_incident')}}">
+                    <button class="login100-form-btn" action="{{url_for('forms.create_incident')}}">
+                        Create Ticket
+                    </button>
+                    </a>
+                    <a href="{{url_for('home.dashboard')}}">
+                    <button class="login100-form-btn p-t-20" action="{{url_for('home.dashboard')}}">
+                        Reset
+                    </button>
+                    </a>
+                 </div>
+                
+               <div style="position:fixed; top:50px; left:50px;">
+                    <a href="{{url_for('auth.logout')}}">
+                    <button class="login100-form-btn" action="{{url_for('auth.logout')}}">
+                        Log Out
+                    </button>
+                    </a>
+               </div>
+
+                <form style="position: fixed; top:10px; right:50px; width:300px; height:50px;" class="login100-form validate-form" action="{{url_for('home.dashboard')}}" method="POST">
+                    <span class="login100-form-title p-b-10" style="font-size:20px;">
+                        Search:
+                    </span>
+                {{ form.hidden_tag() }}
+                <div class="wrap-input100 validate-input" style="height:50px;">
+                    {{form.tagSearch(class="input100")}}
+                    {{form.pocSearch(class="input100")}}
+                    {{form.search(class="login100-form-btn")}}
+                </div>
+                </form>
+                <div class="wrap-table100">
+                  <div class="table100">
+                    <table>
+                        <thead>
+                        <tr class="table100-head">
+                            <th class="column1">Ticket No.</th>
+                            <th class="column2">Title</th>
+                            <th class="column3">Category</th>
+                            <th class="column4">Reported By</th>
+                            <th class="column5">State</th>
+                            <th class="column6">Date Created</th>
+                            <th class="column6">Date Resolved</th>
+                            <th class="column6">View Ticket</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for incident in incidents %}
+                        <tr>
+                          <td class="column1">{{incident[0].incidentID}}</th>
+                          <th class="column2">{{incident[0].title}}</th>
+                          <th class="column3">{{incident[0].category}}</th>
+                          <th class="column4">{{incident[1]}}</th>
+                          <th class="column5">{{incident[0].state}}</th>
+                          <th class="column6">{{incident[0].date_created}}</th>
+                          <th class="column6">{{incident[0].date_resolved}}</th>
+                          <th class="column6"><a href="{{url_for('home.ticket', ticketID = incident[0].incidentID)}}">View</a></th>
+                        {% endfor %}
+                        </tr>
+                      </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+<!-- theme is from colorlib.com/wp/template/responsive-table-v1/--> 

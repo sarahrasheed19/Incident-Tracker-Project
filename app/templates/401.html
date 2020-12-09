@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}401 Unauthorized{% endblock %}
+{% block body %}
+HTTP/1.1 401 Unauthorized
+Date: Wed, 21 Oct 2015 07:28:00 GMT
+WWW-Authenticate: Basic realm="Access to staging site"
+{% endblock %}

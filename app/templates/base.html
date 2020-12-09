@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+      {% block title %} <title>My Website</title> {% endblock %}
+
+        <link href="{{url_for('static', filename='css/util.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/animate/animate.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/animsition/css/animsition.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/select2/select2.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+
+    {% endblock %}
+  </head>
+  
+  <body>
+  {% block body %}
+    <div id="content">{% block content %}{% endblock %}</div>
+  {% endblock body %}
+  </body>
+</html>
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map-custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+{% endblock %}
+
+<!--Template is from colorlib.com/wp/template/login-form-v19/-->
